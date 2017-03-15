@@ -1,0 +1,41 @@
+{% extends 'templates/default.twig' %}
+
+{%block title%} Tambah Laptop {% endblock %}
+
+{% block content %}
+<div class="col-sm-6 col-sm-offset-3 well">
+
+ <form method="post">
+  <div class="form-flat">
+  {% if errors.name %}
+   <span class="help-block">{{ errors.name | first }}</span>
+  {% endif %}
+   <input type="text" name="name" class="form-control" required>
+  </div>
+  <div class="form-flat">
+   <input type="file" name="photo">
+  </div>
+  <div class="form-flat">
+   <select name="category" class="form-control">
+    {% for data in category%}
+     <option value="{{data.id}}">{{data.name}}</option>
+    {% endfor %}
+   </select>
+  </div>
+  <div class="form-flat">
+   {% if errors.stock %}
+    <span class="help-block">{{ errors.stock | first }}</span>
+   {% endif %}
+   <input type="numeric" name="stock" class="form-control" required>
+  </div>
+  <div class="form-flat">
+  {% if errors.price %}
+   <span class="help-block">{{ errors.price | first }}</span>
+  {% endif %}
+   <input type="numeric" name="price" class="form-control" required>
+  </div>
+  <button type="submit" class="btn btn-primary btn-block">Simpan</button>
+ </form>
+ {{data['category']}}
+</div>
+{% endblock %}

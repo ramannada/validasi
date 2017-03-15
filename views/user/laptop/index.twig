@@ -1,0 +1,18 @@
+{% extends 'templates/default.twig' %}
+
+{%block title%} Daftar Laptop {% endblock %}
+
+{% block content %}
+	{% for data in laptop%}
+        <div class="col-sm-3" align="center">
+         <a href"{{base_url()}}/laptop/{{data.name}}" role="button">
+            <img src="{{base_url()}}/img/{{data.photo}}" alt="{{data.photo}}">
+            <div>{{data.name}}</div>
+            <div>Rp {{data.price}}</div>
+            <a href="{{base_url()}}/laptop/buy?={{data.name}}">
+              <button type="button" class="btn btn-primary btn-block">Beli</button>
+            </a>
+         </a>
+        </div>
+    {% endfor %}
+{% endblock %}

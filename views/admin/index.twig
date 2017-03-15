@@ -1,0 +1,47 @@
+{% extends 'templates/default.twig' %}
+
+{%block title%} Daftar Laptop {% endblock %}
+
+{% block content %}
+
+
+{% if success %}
+<div class="sol-sm-6 col-sm-offset-3 well">
+ <span class="fui-check-circle"></span>
+ <span class="pull-right">{{ success }}</span>
+</div>
+{% endif %}
+
+        <div class="table-responsive">
+         <table class="table table-bordered">
+          <tr>
+           <th>No.</th>
+           <th>Nama</th>
+           <th>Foto</th>
+           <th>Kategori</th>
+           <th>Stok</th>
+           <th>Harga</th>
+           <th>Detail</th>
+           <th>Edit</th>
+          </tr>
+          {% for data in laptop %}
+           {% set i = i + 1 %}
+           <tr class="text-center">
+            <td>{{i}}</td>
+            <td>{{ data.name }}</td>
+            <td>{{ data.photo }}</td>
+            <td>{{ data.category }}</td>
+            <td>{{ data.stock }}</td>
+            <td>{{ data.price }}</td>
+            <td>
+             <a href="{{ base_url() }}/" class="btn btn-info">Detail</a>
+            </td>
+            <td>
+             <a href="{{ base_url() }}/admin/edit/{{data.id}}" class="btn btn-warning">Edit</a>
+             <a href="{{ base_url() }}/admin/delete/{{data.id}}" class="btn btn-danger">Hapus</a>
+            </td>
+           </tr>
+           {% endfor %}
+         </table>
+        </div>
+{% endblock %}
